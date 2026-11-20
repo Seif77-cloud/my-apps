@@ -7,12 +7,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
 body{background:#0f0f0f;color:#fff}
-header{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:18px 5%;background:rgba(15,15,15,.9);backdrop-filter:blur(10px);z-index:100}
+header{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:16px 5%;background:rgba(15,15,15,.95);z-index:100}
 .logo{font-size:28px;font-weight:900;letter-spacing:4px}
 .logo span{color:#ff3d68}
-nav a{color:#fff;text-decoration:none;margin:0 15px;font-weight:600}
+.header-right{display:flex;gap:10px;align-items:center}
+.wa-top{background:#25D366;color:#fff;text-decoration:none;padding:10px 18px;border-radius:30px;font-weight:800}
 .cart-btn{background:#ff3d68;border:none;color:#fff;padding:10px 18px;border-radius:30px;font-weight:700;cursor:pointer}
-.hero{min-height:95vh;display:flex;align-items:center;padding:120px 5% 50px;background:linear-gradient(90deg,#0f0f0f 50%,transparent),url('https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop') center/cover}
+.hero{min-height:95vh;display:flex;align-items:center;padding:120px 5% 50px;background:linear-gradient(90deg,#0f0f0f 60%,transparent),url('https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop') center/cover}
 .hero h1{font-size:64px;line-height:1.1;max-width:600px}
 .hero h1 i{color:#ff3d68;font-style:normal}
 .hero p{margin:20px 0;color:#ccc;font-size:18px;max-width:500px}
@@ -22,32 +23,35 @@ nav a{color:#fff;text-decoration:none;margin:0 15px;font-weight:600}
 .filter{display:flex;justify-content:center;gap:15px;padding:40px 5% 10px}
 .filter button{padding:12px 30px;border-radius:30px;border:1px solid #333;background:#1a1a1a;color:#fff;cursor:pointer;font-weight:700}
 .filter button.active{background:#ff3d68;border-color:#ff3d68}
-.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:25px;padding:30px 5% 80px}
-.card{background:#1a1a1a;border-radius:20px;overflow:hidden;transition:.3s}
-.card:hover{transform:translateY(-8px)}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:25px;padding:30px 5% 40px}
+.card{background:#1a1a1a;border-radius:20px;overflow:hidden}
 .card .img-box{width:100%;aspect-ratio:3/4;overflow:hidden;background:#222}
 .card img{width:100%;height:100%;object-fit:cover;display:block}
 .card-info{padding:16px}
-.card-info h3{font-size:18px}
-.card-info p{color:#aaa;font-size:13px;margin:6px 0}
-.price{font-size:20px;font-weight:800;color:#ff3d68}
-.add{width:100%;margin-top:12px;padding:12px;border:none;border-radius:12px;background:#fff;font-weight:800;cursor:pointer}
-.add:hover{background:#ff3d68;color:#fff}
+.price{font-size:20px;font-weight:800;color:#ff3d68;margin:8px 0}
+.add{width:100%;padding:12px;border:none;border-radius:12px;background:#fff;font-weight:800;cursor:pointer;margin-top:6px}
+.wa-order{width:100%;padding:12px;border:none;border-radius:12px;background:#25D366;font-weight:800;cursor:pointer;margin-top:8px;color:#fff}
+.qr-section{background:#fff;color:#000;margin:0 5% 60px;border-radius:25px;padding:30px;display:flex;gap:25px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center}
+.qr-section img{width:170px;height:170px;border-radius:15px}
+.qr-btn{display:inline-block;background:#25D366;color:#fff;padding:14px 25px;border-radius:30px;text-decoration:none;font-weight:900;margin-top:12px}
 .cart-drawer{position:fixed;top:0;right:-400px;width:380px;max-width:90%;height:100%;background:#fff;color:#000;padding:25px;transition:.4s;z-index:200;overflow-y:auto}
 .cart-drawer.open{right:0}
 .cart-item{display:flex;gap:12px;margin:15px 0;align-items:center}
 .cart-item img{width:60px;height:75px;object-fit:cover;border-radius:10px}
 .checkout{width:100%;padding:15px;background:#25D366;border:none;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer;margin-top:15px}
+.float-wa{position:fixed;bottom:20px;left:20px;background:#25D366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;z-index:300;box-shadow:0 5px 20px rgba(0,0,0,.4)}
 footer{text-align:center;padding:30px;color:#888}
-@media(max-width:600px){.hero h1{font-size:42px} nav{display:none}}
+@media(max-width:600px){.hero h1{font-size:42px}.wa-top{display:none}}
 </style>
 </head>
 <body>
 
 <header>
 <div class="logo">VEST<span>RA</span></div>
-<nav><a href="#">Home</a><a href="#shop">Shop</a><a href="#shop">Men</a><a href="#shop">Women</a></nav>
+<div class="header-right">
+<a class="wa-top" href="https://wa.me/201205014931?text=Hello%20VESTRA!%20I%20want%20to%20order" target="_blank">💬 WhatsApp</a>
 <button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="count">0</span>)</button>
+</div>
 </header>
 
 <section class="hero">
@@ -70,15 +74,27 @@ footer{text-align:center;padding:30px;color:#888}
 
 <section class="products" id="products"></section>
 
+<!-- QR SECTION -->
+<div class="qr-section">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wa.me/201205014931" alt="WhatsApp QR">
+<div>
+<h2 style="font-size:28px">اطلب أسرع بالـ QR 📱</h2>
+<p style="color:#666;margin:10px 0">اعمل سكان للكود ده وهيفتح واتساب على طول<br>أو دوس على الزرار</p>
+<a class="qr-btn" href="https://wa.me/201205014931?text=Hello%20VESTRA!%20I%20want%20to%20order" target="_blank">افتح واتساب دلوقتي →</a>
+<p style="margin-top:10px;font-weight:800">📞 01205014931</p>
+</div>
+</div>
+
 <div class="cart-drawer" id="cartDrawer">
 <h2>Your Cart 🛒</h2>
 <div id="cartItems"><p style="color:#888;margin-top:20px">السلة فاضية لسه...</p></div>
 <h3 style="margin-top:20px">Total: <span id="total">0</span> EGP</h3>
-<button class="checkout" onclick="checkout()">اطلب واتساب 📱</button>
+<button class="checkout" onclick="checkout()">اطلب الكل واتساب 📱</button>
 <button onclick="toggleCart()" style="width:100%;margin-top:10px;padding:10px;border:none;background:#eee;border-radius:10px;cursor:pointer">Close</button>
 </div>
 
-<footer>VESTRA © 2026 | 📞 01205014931 | Made by Seif</footer>
+<a class="float-wa" href="https://wa.me/201205014931?text=Hello%20VESTRA!%20I%20want%20to%20order" target="_blank">💬</a>
+<footer>VESTRA © 2026 | 📞 01205014931</footer>
 
 <script>
 const products=[
@@ -96,13 +112,20 @@ function render(filter='all'){
 let list=products.filter(p=>filter==='all'||p.cat===filter);
 document.getElementById('products').innerHTML=list.map(p=>`
 <div class="card">
-<div class="img-box"><img src="${p.img}" loading="lazy"></div>
-<div class="card-info"><h3>${p.name}</h3><p>${p.cat==='men'?'Men':'Women'} • VESTRA Original</p><div class="price">${p.price} EGP</div><button class="add" onclick="addToCart(${p.id})">Add To Cart +</button></div>
-</div>`).join('');
+<div class="img-box"><img src="${p.img}"></div>
+<div class="card-info"><h3>${p.name}</h3><p>${p.cat==='men'?'Men':'Women'} • VESTRA Original</p><div class="price">${p.price} EGP</div>
+<button class="add" onclick="addToCart(${p.id})">Add To Cart +</button>
+<button class="wa-order" onclick="orderOne(${p.id})">اطلب ده واتساب 📱</button>
+</div></div>`).join('');
 document.querySelectorAll('.filter button').forEach(b=>b.classList.remove('active'));
 if(filter==='all') document.getElementById('btn-all').classList.add('active');
 if(filter==='men') document.getElementById('btn-men').classList.add('active');
 if(filter==='women') document.getElementById('btn-women').classList.add('active');
+}
+function orderOne(id){
+let p=products.find(x=>x.id===id);
+let msg=`Hello VESTRA! I want this product:\n\n👕 ${p.name}\n💰 Price: ${p.price} EGP\n📸 Product Photo: ${p.img}\n\nPlease confirm availability and size`;
+window.open('https://wa.me/201205014931?text='+encodeURIComponent(msg),'_blank');
 }
 function filterProducts(f){render(f);document.getElementById('shop').scrollIntoView({behavior:'smooth'})}
 function addToCart(id){cart.push(products.find(p=>p.id===id));updateCart();toggleCart(true)}
@@ -110,16 +133,13 @@ function updateCart(){
 document.getElementById('count').innerText=cart.length;
 let total=cart.reduce((s,p)=>s+p.price,0);
 document.getElementById('total').innerText=total;
-document.getElementById('cartItems').innerHTML=cart.length?cart.map((p,i)=>`<div class="cart-item"><img src="${p.img}"><div><b>${p.name}</b><br>${p.price} EGP</div><button onclick="removeItem(${i})" style="margin-left:auto;border:none;background:none;cursor:pointer;font-size:18px">✕</button></div>`).join(''):'<p style="color:#888;margin-top:20px">السلة فاضية لسه...</p>';
+document.getElementById('cartItems').innerHTML=cart.length?cart.map((p,i)=>`<div class="cart-item"><img src="${p.img}"><div><b>${p.name}</b><br>${p.price} EGP</div><button onclick="removeItem(${i})" style="margin-left:auto;border:none;background:none;cursor:pointer;font-size:18px">✕</button></div>`).join(''):'<p>السلة فاضية لسه...</p>';
 }
 function removeItem(i){cart.splice(i,1);updateCart()}
-function toggleCart(open){
-let d=document.getElementById('cartDrawer');
-if(open) d.classList.add('open'); else d.classList.toggle('open');
-}
+function toggleCart(open){let d=document.getElementById('cartDrawer');if(open) d.classList.add('open'); else d.classList.toggle('open')}
 function checkout(){
 if(!cart.length){alert('السلة فاضية!');return}
-let msg='Hello VESTRA! I want to order:\n'+cart.map(p=>`- ${p.name} : ${p.price} EGP`).join('\n')+`\nTotal: ${cart.reduce((s,p)=>s+p.price,0)} EGP`;
+let msg='Hello VESTRA! I want to order:\n\n'+cart.map(p=>`👕 ${p.name} - ${p.price} EGP\n📸 ${p.img}`).join('\n\n')+`\n\nTotal: ${cart.reduce((s,p)=>s+p.price,0)} EGP`;
 window.open('https://wa.me/201205014931?text='+encodeURIComponent(msg),'_blank');
 }
 render();
